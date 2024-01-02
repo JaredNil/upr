@@ -32,8 +32,9 @@ export default function buildLoader({isDev}: BuildOptions):webpack.RuleSetRule[]
         ],
     }
 
+
     return [
         tsLoader, 
-        scssLoader
+        scssLoader,
     ]
 }

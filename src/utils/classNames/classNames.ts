@@ -5,9 +5,8 @@ export function classNames(cls:string, mods: Mods, addict: string[]){
     return [
         cls,
         ...addict,
-        Object.entries(mods)
+        ...Object.entries(mods)
             .filter(([className, value]) =>  Boolean(value))
-            .map(([className, value]) => className)
-            .join(' ')
+            .map(([className]) => className)
     ].join(' ')
-}
+} 

@@ -21,5 +21,6 @@ export default function buildPlugins(options: BuildOptions): webpack.WebpackPlug
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev)
         }),
+        new webpack.HotModuleReplacementPlugin(),
     ]
 }

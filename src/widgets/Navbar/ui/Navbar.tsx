@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
@@ -13,9 +14,10 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
 
     return (
         <div className={classNames(cls.Navbar,{},[])}>
+            <ThemeSwitcher/>
             <div className={classNames(cls.links)}>
-            <AppLink to={'/'} theme={AppLinkTheme.PRIMARY}>ukfdyfz</AppLink>
-            <AppLink to={'/about'} theme={AppLinkTheme.SECONDARY}>about</AppLink>
+                <AppLink to={'/'} theme={AppLinkTheme.PRIMARY}>ukfdyfz</AppLink>
+                <AppLink to={'/about'} theme={AppLinkTheme.SECONDARY}>about</AppLink>
             </div>
 
         </div>
@@ -23,3 +25,4 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
 };
 
 export default Navbar;
+

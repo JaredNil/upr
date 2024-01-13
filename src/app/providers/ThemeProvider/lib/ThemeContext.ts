@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEventHandler, createContext } from "react";
+import { MouseEventHandler, createContext } from "react";
 
 export enum Theme {
     LIGHT = 'light',

@@ -14,7 +14,6 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
 
     return (
         <div className={classNames(cls.Navbar,{},[])}>
-            <ThemeSwitcher/>
             <div className={classNames(cls.links)}>
                 <AppLink to={'/'} theme={AppLinkTheme.PRIMARY}>ukfdyfz</AppLink>
                 <AppLink to={'/about'} theme={AppLinkTheme.SECONDARY}>about</AppLink>

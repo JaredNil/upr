@@ -1,0 +1,17 @@
+.Navbar {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: var(--inverted-bg-color);
+}
+
+.links {
+  display: flex;
+  margin-left: auto;
+}
+.links a {
+  margin-right: 20px;
+  text-decoration: none;
+}/*# sourceMappingURL=Navbar.module.css.map */

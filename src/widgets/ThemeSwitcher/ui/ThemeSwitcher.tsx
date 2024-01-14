@@ -27,3 +27,4 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }: ThemeSwitche
 }
 
 export default ThemeSwitcher
+

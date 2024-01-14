@@ -1,13 +1,13 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
-function AboutPage() {
-    const { t } = useTranslation();
+const AboutPage: React.FC = () => {
+    const { t } = useTranslation()
 
     return (
         <div>
             {t('О_сайте_титул')}
         </div>
-    );
+    )
 }
 
-export default AboutPage;
+export default AboutPage

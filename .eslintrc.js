@@ -1,34 +1,43 @@
 module.exports = {
-    env: {
-        browser: true,
-        es2021: true,
+    "env": {
+        "browser": true,
+        "es2021": true
     },
-    extends: 'airbnb',
-    overrides: [
-        {
-            env: {
-                node: true,
-            },
-            files: [
-                '.eslintrc.{js,cjs}',
-            ],
-            parserOptions: {
-                sourceType: 'script',
-            },
-        },
+    "extends": [
+        "standard-with-typescript",
+        "plugin:react/recommended"
     ],
-    parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
+    "overrides": [
+        {
+            "env": {
+                "node": true
+            },
+            "files": [
+                ".eslintrc.{js,cjs}"
+            ],
+            "parserOptions": {
+                "sourceType": "script"
+            }
+        }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
-    rules: {
+    "plugins": [
+        "react"
+    ],
+    ignorePatterns: [".eslintrc.js", "vite.config.ts"],
+    "rules": {
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
-        indent: [2, 4],
+        "indent": [2, 4],
+        "@typescript-eslint/indent": [2, 4],
         'react/jsx-filename-extension': [2, { extensions: ['js', '.jsx', 'tsx'] }],
         'import/no-unresolved': 'off',
         'import/prefer-default-export': 'off',
-        'no-unused-vars': 'warn',
+        'no-unused-vars': 'off',
+        "@typescript-eslint/no-unused-vars":"off",
         'react/require-default-props': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-props-no-spreading': 'warn',
@@ -37,11 +46,9 @@ module.exports = {
         'import/extenstions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-    },
-
-};
-
-/* eslint-disable */
-    // global: {
-    //     // __IS_DEV__ : Boolean,
-    // },
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
+        "@typescript-eslint/strict-boolean-expressions" : "off",
+        "@typescript-eslint/no-misused-promises": "off",
+        "@typescript-eslint/naming-convention": "warn"
+    }
+}

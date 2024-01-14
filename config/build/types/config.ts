@@ -1,9 +1,9 @@
-export type BuildModeType = 'production' | 'development'
+export type BuildModeType = 'production' | 'development' | undefined
 
 export interface BuildPaths {
     entry: string
     build: string
-    html: string,
+    html: string
     src: string
 }
 

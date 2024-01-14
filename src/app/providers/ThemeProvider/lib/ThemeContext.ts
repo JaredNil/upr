@@ -1,4 +1,4 @@
-import { MouseEventHandler, createContext } from "react";
+import { type MouseEventHandler, createContext } from 'react'
 
 export enum Theme {
     LIGHT = 'light',
@@ -6,8 +6,8 @@ export enum Theme {
 }
 
 export interface ThemeContextProps {
-    setTheme?: (theme: Theme, event?: MouseEventHandler<HTMLButtonElement>) => void;
-    theme?: Theme;
+    setTheme?: (theme: Theme, event?: MouseEventHandler<HTMLButtonElement>) => void
+    theme?: Theme
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({})

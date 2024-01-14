@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-      "types": ["node"],
+      "types": ["node", "jest"],
  
       "outDir": "./dist/",
       // Подсвечивает все места где не указан тип

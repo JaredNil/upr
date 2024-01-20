@@ -35,7 +35,10 @@
       }
     },
 
-
+    "include": [
+      ".eslintrc.js",
+      "src"
+    ],
     "ts-node": {
       "compilerOptions": {
         "module": "CommonJS"

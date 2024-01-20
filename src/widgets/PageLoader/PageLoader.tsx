@@ -1,18 +1,16 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames } from 'shared/lib/classNames/classNames';
 
 interface PageLoaderProps {
-    className?: string
-    // theme?: ;
+	className?: string;
+	// theme?: ;
 }
 
-const PageLoader: React.FC<PageLoaderProps> = ({ className }: PageLoaderProps) => {
-    return (
-        <div
-            className={classNames('page__loader', {}, [className])}
-        >
-            <div className="lds-hourglass"></div>
-        </div>
-    )
-}
+const PageLoader: React.FC<PageLoaderProps> = ({
+	className,
+}: PageLoaderProps) => (
+	<div className={classNames('page__loader', {}, [className])}>
+		<div className="lds-hourglass" />
+	</div>
+);
 
-export default PageLoader
+export default PageLoader;

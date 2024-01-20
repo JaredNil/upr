@@ -13,5 +13,5 @@ declare module '*.svg' {
 	const content: FC<SVGProps<SVGElement>>;
 	export default content;
 }
-
+// eslint-disable-next-line
 declare const __IS_DEV__: boolean;

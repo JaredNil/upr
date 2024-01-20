@@ -25,7 +25,7 @@ module.exports = {
 		project: './tsconfig.json',
 	},
 	plugins: ['react', '@typescript-eslint', 'prettier'],
-	ignorePatterns: ['build/', 'config/'],
+	ignorePatterns: ['build/', 'config/', 'webpack.config.ts'],
 	rules: {
 		'prefer-const': 'off',
 		'@typescript-eslint/no-unused-vars': 'warn',
@@ -34,7 +34,7 @@ module.exports = {
 		'import/prefer-default-export': 'off',
 		'react/function-component-definition': 'off',
 		'react/require-default-props': 'off',
-
 		indent: ['error', 'tab'],
+		'prettier/prettier': ['error', { endOfLine: 'auto' }],
 	},
 };

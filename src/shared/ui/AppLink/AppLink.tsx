@@ -21,7 +21,6 @@ const AppLink: React.FC<AppLinkProps> = (props: AppLinkProps) => {
 		className,
 		children,
 		theme = AppLinkTheme.PRIMARY,
-		...otherProps
 	} = props;
 
 	return (
@@ -31,7 +30,6 @@ const AppLink: React.FC<AppLinkProps> = (props: AppLinkProps) => {
 				className,
 				cls[theme],
 			])}
-			{...otherProps}
 		>
 			{children}
 		</Link>

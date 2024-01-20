@@ -32,7 +32,10 @@ const Sidebar: React.FC<SidebarProps> = ({
 				[className]
 			)}
 		>
-			<button onClick={onToggleSidebar}>
+			<button
+				type="button"
+				onClick={onToggleSidebar}
+			>
 				TOGGLE SIDEBAR
 			</button>
 			<div className={cls.switchers}>

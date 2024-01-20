@@ -4,5 +4,9 @@
     "Перевод": "Translation",
     "О_сайте_титул": "About",
     "Главная_титул": "MainPage",
-    "Страница не найдена": "Page not found"
+    "Страница не найдена": "Page not found",
+
+    "Произошла непредвиденная ошибка": "An unexpected error has occurred",
+    "Обновить страницу": "Reload application"
+
 }

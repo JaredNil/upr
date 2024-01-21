@@ -2,10 +2,9 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import PageLoader from './PageLoader';
-
 import { themeDecorator } from 'shared/config/storybook/StyleDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider/lib/ThemeContext';
+import PageLoader from './PageLoader';
 
 const meta: Meta<typeof PageLoader> = {
 	title: 'widget/PageLoader',

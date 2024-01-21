@@ -2,10 +2,9 @@ import React from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Navbar from './Navbar';
-
 import { themeDecorator } from 'shared/config/storybook/StyleDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider/lib/ThemeContext';
+import Navbar from './Navbar';
 
 const meta: Meta<typeof Navbar> = {
 	title: 'widget/Navbar',

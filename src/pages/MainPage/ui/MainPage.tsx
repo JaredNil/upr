@@ -6,7 +6,7 @@ const MainPage: React.FC = () => {
 
 	return (
 		<div>
-			<BugButton />
+			{/* <BugButton /> */}
 			{t('Главная_титул')}
 		</div>
 	);

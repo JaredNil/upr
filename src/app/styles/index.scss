@@ -1,22 +1,21 @@
-
 @import url("reset");
 @import url("themes/dark");
 @import url("themes/normal");
 @import url("variables/global");
 
 
-.app{
+.app {
     font: var(--font-m);
     color: var(--primary-color);
     background: var(--bg-color);
-} 
+}
 
 
-main.content{
+main.content {
     display: flex;
 }
 
-.page-wrapper{
+.page-wrapper {
     flex-grow: 1;
     padding: 20px;
 }

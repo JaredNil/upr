@@ -3,15 +3,7 @@ module.exports = {
 		browser: true,
 		es2021: true,
 	},
-	extends: [
-		'airbnb',
-		'airbnb-typescript',
-		'airbnb/hooks',
-		// "next/core-web-vitals",
-		'plugin:@typescript-eslint/recommended',
-		'prettier',
-		'plugin:prettier/recommended',
-	],
+	extends: ['airbnb', 'airbnb-typescript', 'airbnb/hooks', 'plugin:@typescript-eslint/recommended', 'prettier', 'plugin:prettier/recommended', 'plugin:storybook/recommended'],
 	overrides: [
 		{
 			env: {

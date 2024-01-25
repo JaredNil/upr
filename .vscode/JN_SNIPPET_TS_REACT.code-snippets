@@ -3,7 +3,6 @@
 		"prefix": "rc",
 		"body": [
 		"import { classNames } from 'shared/lib/classNames/classNames'",
-		"",
 		"import cls from './${TM_FILENAME_BASE}.module.scss'",
 		"",
 		"interface ${TM_FILENAME_BASE}Props{",
@@ -11,15 +10,27 @@
 		"}",
 		"",
 		"const ${TM_FILENAME_BASE}: React.FC<${TM_FILENAME_BASE}Props> = (props: ${TM_FILENAME_BASE}Props) => {",
-		"  return (",
-		"    <>",
-		"		${2}",
-		"    </>",
-		"  );",
+		"	const { className } = props; ",
+		"",
+		"	return (",
+		"		<div className={classNames(cls.${TM_FILENAME_BASE}, {}, [className])}>",
+		"			Template_text${2}",
+		"		</div>",
+		"	);",
 		"};",
 		"",
 		"export default $TM_FILENAME_BASE;"
 	],
 	"description": "Create TS Functional React Component"
+	},
+
+	"Add useTranslation": {
+		"prefix": "rt",
+		"body": [
+		"const { t } = useTranslation();",
+	],
+	"description": "Add useTranslation"
 	}
 }
+
+

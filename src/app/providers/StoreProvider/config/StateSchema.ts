@@ -1,7 +1,5 @@
-export interface StateSchema {
-	// counter: CounterState;
-}
+import { UserSchema } from 'entities/User';
 
-// export interface CounterState {
-// 	value: number;
-// }
+export interface StateSchema {
+	user: UserSchema;
+}

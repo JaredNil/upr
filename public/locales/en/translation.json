@@ -9,6 +9,9 @@
     "Произошла непредвиденная ошибка": "An unexpected error has occurred",
     "Обновить страницу": "Reload application",
 
-    "Войти": "Auth"
+    "Войти": "Auth",
+
+    "Введите username": "Type username",
+    "Введите password": "Type password"
 
 }

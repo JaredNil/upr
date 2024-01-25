@@ -25,7 +25,7 @@ module.exports = {
 		project: './tsconfig.json',
 	},
 	plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
-	ignorePatterns: ['build/', 'config/', 'webpack.config.ts'],
+	ignorePatterns: ['build/', 'config/', 'webpack.config.ts', 'json-server/'],
 	rules: {
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'error',
@@ -34,6 +34,7 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': 'error',
 		'react/react-in-jsx-scope': 'off',
 		'import/prefer-default-export': 'off',
+		'import/extensions': 'off',
 		'react/function-component-definition': 'off',
 		'react/require-default-props': 'off',
 		indent: ['error', 'tab'],

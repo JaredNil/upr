@@ -6,10 +6,7 @@ export enum Theme {
 }
 
 export interface ThemeContextProps {
-	setTheme?: (
-		theme: Theme,
-		event?: MouseEventHandler<HTMLButtonElement>
-	) => void;
+	setTheme?: (theme: Theme, event?: MouseEventHandler<HTMLButtonElement>) => void;
 	theme?: Theme;
 }
 

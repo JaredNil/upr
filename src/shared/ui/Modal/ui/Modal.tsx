@@ -39,47 +39,22 @@ const Modal: React.FC<ModalProps> = (props: ModalProps) => {
 
 	useEffect(() => {
 		if (isOpen) {
-			window.addEventListener(
-				'keydown',
-				onKeyDown
-			);
+			window.addEventListener('keydown', onKeyDown);
 		}
 		return () => {
-			window.removeEventListener(
-				'keydown',
-				onKeyDown
-			);
+			window.removeEventListener('keydown', onKeyDown);
 		};
 	}, [isOpen, onClose, onKeyDown]);
 
 	return (
 		<Portal>
-			<div
-				className={classNames(
-					cls.Modal,
-					mods,
-					[className]
-				)}
-			>
-				<div
-					className={
-						cls.overlay
-					}
-					onClick={
-						closeHandler
-					}
-				>
+			<div className={classNames(cls.Modal, mods, [className])}>
+				<div className={cls.overlay} onClick={closeHandler}>
 					<div
-						className={
-							cls.content
-						}
-						onClick={
-							onContentClick
-						}
+						className={cls.content}
+						onClick={onContentClick}
 					>
-						{
-							children
-						}
+						{children}
 					</div>
 				</div>
 			</div>

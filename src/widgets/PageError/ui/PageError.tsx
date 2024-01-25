@@ -13,14 +13,8 @@ const PageError: React.FC = () => {
 
 	return (
 		<div className={cls.PageError}>
-			<p>
-				{t(
-					'Произошла непредвиденная ошибка'
-				)}
-			</p>
-			<Button onClick={reloadPage}>
-				{t('Обновить страницу')}
-			</Button>
+			<p>{t('Произошла непредвиденная ошибка')}</p>
+			<Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
 		</div>
 	);
 };

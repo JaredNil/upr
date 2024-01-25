@@ -18,10 +18,7 @@ interface SidebarProps {
 	className?: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({
-	className,
-	children,
-}: SidebarProps) => {
+const Sidebar: React.FC<SidebarProps> = ({ className, children }: SidebarProps) => {
 	const [collapsed, setCollapsed] = useState(false);
 
 	const onToggleSidebar = (): void => {
@@ -33,8 +30,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 			className={classNames(
 				cls.Sidebar,
 				{
-					[cls.collapsed]:
-						collapsed,
+					[cls.collapsed]: collapsed,
 				},
 				[className]
 			)}
@@ -42,33 +38,22 @@ const Sidebar: React.FC<SidebarProps> = ({
 			<div className={cls.items}>
 				<div className={cls.item}>
 					<AppLink
-						to={
-							RoutePath.main
-						}
-						theme={
-							AppLinkTheme.PRIMARY
-						}
+						to={RoutePath.main}
+						theme={AppLinkTheme.PRIMARY}
 					>
 						<MainIcon
 							className={
 								cls.icon
 							}
 						/>
-						<span
-							className={
-								cls.link
-							}
-						>
-							Main
-							page
+						<span className={cls.link}>
+							Main page
 						</span>
 					</AppLink>
 				</div>
 				<div className={cls.item}>
 					<AppLink
-						to={
-							RoutePath.about
-						}
+						to={RoutePath.about}
 						theme={
 							AppLinkTheme.SECONDARY
 						}
@@ -78,13 +63,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 								cls.icon
 							}
 						/>
-						<span
-							className={
-								cls.link
-							}
-						>
-							About
-							page
+						<span className={cls.link}>
+							About page
 						</span>
 					</AppLink>
 				</div>
@@ -93,21 +73,15 @@ const Sidebar: React.FC<SidebarProps> = ({
 				type="button"
 				onClick={onToggleSidebar}
 				className={cls.collapsedBtn}
-				theme={
-					ButtonTheme.BACKGROUND_INVERTED
-				}
+				theme={ButtonTheme.BACKGROUND_INVERTED}
 				square
 				size={ButtonSize.XL}
 			>
 				{collapsed ? '>' : '<'}
 			</Button>
 			<div className={cls.switchers}>
-				<ThemeSwitcher
-					className={cls.w_30}
-				/>
-				<LangSwitcher
-					className={cls.lang}
-				/>
+				<ThemeSwitcher className={cls.w_30} />
+				<LangSwitcher className={cls.lang} />
 			</div>
 		</div>
 	);

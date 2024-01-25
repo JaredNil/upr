@@ -19,25 +19,16 @@ const Navbar: React.FC<NavbarProps> = ({ className }: NavbarProps) => {
 	}, []);
 
 	return (
-		<div
-			className={classNames(cls.Navbar, {}, [
-				className,
-			])}
-		>
+		<div className={classNames(cls.Navbar, {}, [className])}>
 			<Button
 				theme={ButtonTheme.OUTLINE}
-				className={classNames(
-					cls.links
-				)}
+				className={classNames(cls.links)}
 				type="button"
 				onClick={() => onToggleModal}
 			>
 				{t('Войти')}
 			</Button>
-			<Modal
-				isOpen={isAuthModal}
-				onClose={() => onToggleModal}
-			>
+			<Modal isOpen={isAuthModal} onClose={() => onToggleModal}>
 				asdsda
 			</Modal>
 		</div>

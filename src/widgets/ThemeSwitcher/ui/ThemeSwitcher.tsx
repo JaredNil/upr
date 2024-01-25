@@ -12,26 +12,16 @@ interface ThemeSwitcherProps {
 	className?: string;
 }
 
-const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
-	className,
-}: ThemeSwitcherProps) => {
+const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }: ThemeSwitcherProps) => {
 	const { theme, toggleTheme } = useTheme();
 
 	return (
 		<Button
-			className={classNames(
-				cls.ThemeSwitcher,
-				{},
-				[className]
-			)}
+			className={classNames(cls.ThemeSwitcher, {}, [className])}
 			theme={ButtonTheme.CLEAR}
 			onClick={toggleTheme}
 		>
-			<ButtonIcon
-				className={classNames(
-					cls.ThemeSwitcher_btn
-				)}
-			/>
+			<ButtonIcon className={classNames(cls.ThemeSwitcher_btn)} />
 		</Button>
 	);
 };

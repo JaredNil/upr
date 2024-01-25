@@ -9,21 +9,15 @@ interface LangSwitcherProps {
 	className?: string;
 }
 
-const LangSwitcher: React.FC<LangSwitcherProps> = ({
-	className,
-}: LangSwitcherProps) => {
+const LangSwitcher: React.FC<LangSwitcherProps> = ({ className }: LangSwitcherProps) => {
 	const { t, i18n } = useTranslation();
 
 	const toggle = async (): Promise<void> => {
-		await i18n.changeLanguage(
-			i18n.language === 'ru' ? 'en' : 'ru'
-		);
+		await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
 	};
 	return (
 		<Button
-			className={classNames(cls.LangSwither, {}, [
-				className,
-			])}
+			className={classNames(cls.LangSwither, {}, [className])}
 			theme={ButtonTheme.CLEAR}
 			onClick={toggle}
 		>

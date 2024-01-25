@@ -6,10 +6,7 @@ interface PortalProps {
 	element?: HTMLElement;
 }
 
-const Portal: React.FC<PortalProps> = ({
-	children,
-	element = document.body,
-}: PortalProps) => {
+const Portal: React.FC<PortalProps> = ({ children, element = document.body }: PortalProps) => {
 	return createPortal(children, element);
 };
 

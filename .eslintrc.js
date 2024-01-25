@@ -37,7 +37,12 @@ module.exports = {
 		'react/function-component-definition': 'off',
 		'react/require-default-props': 'off',
 		indent: ['error', 'tab'],
-		'prettier/prettier': ['error', { endOfLine: 'auto' }],
+		'prettier/prettier': [
+			'error',
+			{
+				endOfLine: 'auto',
+			},
+		],
 		'react/jsx-props-no-spreading': 'warn',
 		'jsx-a11y/click-events-have-key-events': 'off',
 		'jsx-a11y/no-static-element-interactions': 'off',

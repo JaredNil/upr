@@ -5,9 +5,7 @@ interface PageLoaderProps {
 	// theme?: ;
 }
 
-const PageLoader: React.FC<PageLoaderProps> = ({
-	className,
-}: PageLoaderProps) => (
+const PageLoader: React.FC<PageLoaderProps> = ({ className }: PageLoaderProps) => (
 	<div className={classNames('page__loader', {}, [className])}>
 		<div className="lds-hourglass" />
 	</div>

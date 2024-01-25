@@ -1,17 +1,21 @@
 @import url("./reset.scss");
 @import url("./themes/dark.scss");
 @import url("./themes/normal.scss");
+@import url("./themes/orange.scss");
 @import url("./variables/global.scss");
-
 
 body {
     font: var(--font-m);
     color: var(--primary-color);
-}
-
-.app {
     background: var(--bg-color);
     min-height: 100vh;
+}
+
+.app_redesigned {
+    background: var(--bg-redesigned);
+    min-height: 100vh;
+    font: var(--font-m-redesigned);
+    color: var(--text-redesigned);
 }
 
 

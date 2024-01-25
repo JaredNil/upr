@@ -3,7 +3,8 @@
     "rules": {
         "selector-class-pattern":null,
         "custom-property-empty-line-before": null,
-        "declaration-empty-line-before": null
+        "declaration-empty-line-before": null,
+        "no-invalid-double-slash-comments": null
     }
 }
 

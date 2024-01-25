@@ -24,9 +24,11 @@ module.exports = {
 	parserOptions: {
 		project: './tsconfig.json',
 	},
-	plugins: ['react', '@typescript-eslint', 'prettier'],
+	plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
 	ignorePatterns: ['build/', 'config/', 'webpack.config.ts'],
 	rules: {
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'error',
 		'prefer-const': 'off',
 		'@typescript-eslint/no-unused-vars': 'warn',
 		'@typescript-eslint/no-explicit-any': 'error',
@@ -37,5 +39,7 @@ module.exports = {
 		indent: ['error', 'tab'],
 		'prettier/prettier': ['error', { endOfLine: 'auto' }],
 		'react/jsx-props-no-spreading': 'warn',
+		'jsx-a11y/click-events-have-key-events': 'off',
+		'jsx-a11y/no-static-element-interactions': 'off',
 	},
 };

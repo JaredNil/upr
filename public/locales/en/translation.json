@@ -7,6 +7,8 @@
     "Страница не найдена": "Page not found",
 
     "Произошла непредвиденная ошибка": "An unexpected error has occurred",
-    "Обновить страницу": "Reload application"
+    "Обновить страницу": "Reload application",
+
+    "Войти": "Auth"
 
 }

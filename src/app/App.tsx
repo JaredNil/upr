@@ -1,13 +1,13 @@
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppRouter } from './providers/router/index';
-import { useTheme } from './providers/ThemeProvider';
+import { Modal } from 'shared/ui/Modal';
 
-import './styles/index.scss';
+import { useTheme } from './providers/ThemeProvider';
+import { AppRouter } from './providers/router/index';
 
 const App: React.FC = () => {
 	const { theme } = useTheme();
@@ -16,6 +16,7 @@ const App: React.FC = () => {
 		<div className={classNames('app', {}, [theme])}>
 			<Suspense fallback="">
 				<Navbar />
+
 				<main className="content">
 					<Sidebar />
 					<AppRouter />

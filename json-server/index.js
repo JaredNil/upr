@@ -1,5 +1,5 @@
 const fs = require('fs');
-const jsonServer = require('json-server');
+var jsonServer = require('json-server');
 const path = require('path');
 
 const server = jsonServer.create();

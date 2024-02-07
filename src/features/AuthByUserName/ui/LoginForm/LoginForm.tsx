@@ -2,25 +2,42 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import Button from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { memo, useCallback, useEffect, useState } from 'react';
-import Text, { TextTheme } from 'shared/ui/Text/Text';
-import { loginByUsername } from '../../model/service/loginByUsername/loginByUsername';
-import { getLoginState } from '../../model/selector/getLoginState';
-import { loginAction } from '../../model/slice/LoginSlice';
+import Text from 'shared/ui/Text/Text';
+import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
+import {
+	loginAction,
+	loginReducer,
+	loginByUsername,
+	getLoginUsername,
+	getLoginPassword,
+	getLoginIsLoading,
+	getLoginError,
+} from 'features/AuthByUserName';
+
+import DynamicModuleLoader, {
+	ReducerList,
+} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import cls from './LoginForm.module.scss';
 
-interface LoginFormProps {
+export interface LoginFormProps {
 	className?: string;
 }
+
+const initialReducers: ReducerList = {
+	login: loginReducer,
+};
 
 const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	const { className } = props;
 	const { t } = useTranslation();
-
 	const dispatch = useDispatch();
-	const loginForm = useSelector(getLoginState);
-	const { username, password, isLoading, error } = loginForm;
+
+	const username = useSelector(getLoginUsername);
+	const password = useSelector(getLoginPassword);
+	const isLoading = useSelector(getLoginIsLoading);
+	const error = useSelector(getLoginError);
 
 	const onChangeUsername = useCallback(
 		(value: string) => {
@@ -48,24 +65,25 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	}, [error]);
 
 	return (
-		<div className={classNames(cls.LoginForm, {}, [className])}>
-			<Text title="Окно авторизации" />
-			<Input
-				type="text"
-				className={cls.input}
-				placeholder={t('Введите username')}
-				autoFocus
-				onChange={onChangeUsername}
-				value={loginForm.username}
-			/>
-			<Input
-				type="text"
-				className={cls.input}
-				placeholder={t('Введите password')}
-				onChange={onChangePassword}
-				value={loginForm.password}
-			/>
-			{/* {errorState.map((_, i) => (
+		<DynamicModuleLoader reducers={initialReducers}>
+			<div className={classNames(cls.LoginForm, {}, [className])}>
+				<Text title="Окно авторизации" />
+				<Input
+					type="text"
+					className={cls.input}
+					placeholder={t('Введите username')}
+					autoFocus
+					onChange={onChangeUsername}
+					value={username}
+				/>
+				<Input
+					type="text"
+					className={cls.input}
+					placeholder={t('Введите password')}
+					onChange={onChangePassword}
+					value={password}
+				/>
+				{/* {errorState.map((_, i) => (
 				<Text
 					title="erors"
 					textError={{ message: error }}
@@ -73,14 +91,15 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 					key={error}
 				/>
 			))} */}
-			<Button
-				className={cls.loginBtb}
-				onClick={onLoginClick}
-				disabled={isLoading}
-			>
-				{t('Войти')}
-			</Button>
-		</div>
+				<Button
+					className={cls.loginBtb}
+					onClick={onLoginClick}
+					disabled={isLoading}
+				>
+					{t('Войти')}
+				</Button>
+			</div>
+		</DynamicModuleLoader>
 	);
 });
 

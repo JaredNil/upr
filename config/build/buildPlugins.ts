@@ -30,14 +30,24 @@ export function buildPlugins({
 		new CopyPlugin({
 			patterns: [{ from: paths.locales, to: paths.buildLocales }],
 		}),
+		new BundleAnalyzerPlugin({
+			openAnalyzer: true,
+		}),
+		new BundleAnalyzerPlugin({
+			openAnalyzer: true,
+			analyzerPort: 'auto',
+		}),
 	];
 
 	if (isDev) {
 		plugins.push(new ReactRefreshWebpackPlugin());
 		plugins.push(new webpack.HotModuleReplacementPlugin());
-		new BundleAnalyzerPlugin({
-			openAnalyzer: false,
-		});
+		// plugins.push(
+		// 	new BundleAnalyzerPlugin({
+		// 		openAnalyzer: true,
+		// 		analyzerPort: 'auto',
+		// 	})
+		// );
 	}
 
 	return plugins;

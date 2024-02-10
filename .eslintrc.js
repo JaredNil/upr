@@ -12,6 +12,10 @@ module.exports = {
 		'plugin:prettier/recommended',
 		'plugin:storybook/recommended',
 	],
+	globals: {
+		__IS_DEV__: true,
+		__API__: trye,
+	},
 	overrides: [
 		{
 			env: {

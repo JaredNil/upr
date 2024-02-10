@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 declare module '*.scss' {
 	type IClassNames = Record<string, string>;
 	const classNames: IClassNames;
@@ -13,5 +15,6 @@ declare module '*.svg' {
 	const content: FC<SVGProps<SVGElement>>;
 	export default content;
 }
-// eslint-disable-next-line
+
 declare const __IS_DEV__: boolean;
+declare const __API__: string;

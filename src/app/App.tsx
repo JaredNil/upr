@@ -1,15 +1,15 @@
-import { Suspense, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Suspense, useEffect } from 'react';
+
+import { useTheme } from './providers/ThemeProvider';
+import { AppRouter } from './providers/router/index';
+
+import { userAction } from 'entities/User';
 
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Modal } from 'shared/ui/Modal';
-
-import { useDispatch } from 'react-redux';
-import { userAction } from 'entities/User';
-import { useTheme } from './providers/ThemeProvider';
-import { AppRouter } from './providers/router/index';
 
 const App: React.FC = () => {
 	const { theme } = useTheme();

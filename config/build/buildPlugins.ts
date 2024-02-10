@@ -34,7 +34,7 @@ export function buildPlugins({
 			openAnalyzer: true,
 		}),
 		new BundleAnalyzerPlugin({
-			openAnalyzer: true,
+			openAnalyzer: false,
 			analyzerPort: 'auto',
 		}),
 	];

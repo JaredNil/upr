@@ -12,12 +12,12 @@ export type ReducerList = {
 interface DynamicModuleLoaderProps {
 	reducers: ReducerList;
 	removeAfterUnmount?: boolean;
-	children: ReactNode;
+	children?: ReactNode;
 }
 
 type ReducersListEntry = [StateSchemaKey, Reducer];
 
-const DynamicModuleLoader: React.FC<DynamicModuleLoaderProps> = ({
+export const DynamicModuleLoader: React.FC<DynamicModuleLoaderProps> = ({
 	reducers,
 	children,
 	removeAfterUnmount = true,
@@ -48,5 +48,3 @@ const DynamicModuleLoader: React.FC<DynamicModuleLoaderProps> = ({
 
 	return <>{children}</>;
 };
-
-export default DynamicModuleLoader;

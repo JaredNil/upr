@@ -2,10 +2,9 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import Button from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { memo, useCallback, useEffect, useState } from 'react';
 import Text from 'shared/ui/Text/Text';
-import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import {
 	loginAction,
 	loginReducer,
@@ -16,13 +15,16 @@ import {
 	getLoginError,
 } from 'features/AuthByUserName';
 
-import DynamicModuleLoader, {
+import {
+	DynamicModuleLoader,
 	ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
 	className?: string;
+	onSuccess: () => void;
 }
 
 const initialReducers: ReducerList = {
@@ -30,9 +32,9 @@ const initialReducers: ReducerList = {
 };
 
 const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
-	const { className } = props;
+	const { className, onSuccess } = props;
 	const { t } = useTranslation();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const username = useSelector(getLoginUsername);
 	const password = useSelector(getLoginPassword);
@@ -53,10 +55,11 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		[dispatch]
 	);
 
-	const onLoginClick = useCallback((): void => {
+	const onLoginClick = useCallback(async () => {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		dispatch<any>(loginByUsername({ username, password }));
-	}, [dispatch, username, password]);
+		const result = await dispatch<any>(loginByUsername({ username, password }));
+		if (result.meta.requestStatus === 'fulfilled') onSuccess();
+	}, [dispatch, username, password, onSuccess]);
 
 	const [errorState, setErrorState] = useState([]);
 

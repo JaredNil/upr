@@ -61,10 +61,12 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 		if (result.meta.requestStatus === 'fulfilled') onSuccess();
 	}, [dispatch, username, password, onSuccess]);
 
-	const [errorState, setErrorState] = useState([]);
+	const [errorState, setErrorState] = useState<string[]>([]);
 
 	useEffect(() => {
-		setErrorState([error]);
+		if (error) {
+			setErrorState([error]);
+		}
 	}, [error]);
 
 	return (

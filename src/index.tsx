@@ -11,9 +11,7 @@ import 'shared/config/i18n/i18n';
 
 import 'app/styles/index.scss';
 
-const container = document.getElementById('root');
-
-const root = createRoot(container);
+const root = createRoot(document.getElementById('root')!);
 
 root.render(
 	<BrowserRouter>

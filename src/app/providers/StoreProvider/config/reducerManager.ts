@@ -12,7 +12,7 @@ export function createReducerManager(
 
 	return {
 		getReducerMap: () => reducers,
-		reduce: (state: StateSchema, action: UnknownAction) => {
+		reduce: (state: Partial<StateSchema>, action: UnknownAction) => {
 			if (keysToRemove.length > 0) {
 				state = { ...state };
 				for (let key of keysToRemove) {
@@ -20,7 +20,7 @@ export function createReducerManager(
 				}
 				keysToRemove = [];
 			}
-			return combinedReducer(state, action);
+			return combinedReducer((state = {}), action);
 		},
 
 		add: (key: StateSchemaKey, reducer: Reducer) => {

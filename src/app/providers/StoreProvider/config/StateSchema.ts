@@ -1,4 +1,5 @@
 import {
+	Dispatch,
 	EnhancedStore,
 	Reducer,
 	ReducersMapObject,
@@ -31,13 +32,12 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 	reducerManager: ReducerManager;
 }
 
-export interface ThunkExtraArg {
-	api: AxiosInstance;
-	navigate: (to: To, options?: NavigateOptions) => void;
+export interface ThunkConfig<T> {
+	serializedErrorType: T;
+	extra: ThunkExtraArg;
 }
 
-export interface ThunkConfig<T> {
-	serializedErrorType: string;
-	rejectValue: T;
-	extra: ThunkExtraArg;
+export interface ThunkExtraArg {
+	api: AxiosInstance;
+	navigate?: (to: To, options?: NavigateOptions) => void;
 }

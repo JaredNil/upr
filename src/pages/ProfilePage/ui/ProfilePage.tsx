@@ -1,14 +1,24 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+
+import {
+	getProfileError,
+	getProfileIsLoading,
+	getProfileData,
+	ProfileCard,
+	fetchProfileData,
+	profileReducer,
+} from 'entities/Profile';
+
 import {
 	DynamicModuleLoader,
 	ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { fetchProfileData, profileReducer } from 'entities/Profile';
-import cls from './ProfilePage.module.scss';
-import { useEffect } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ProfileCard } from './../../../entities/Profile/ui/ProfileCard/ProfileCard';
+
+import cls from './ProfilePage.module.scss';
 
 interface ProfilePageProps {
 	className?: string;
@@ -23,6 +33,10 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 
 	const dispatch = useAppDispatch();
 
+	const data = useSelector(getProfileData) || undefined;
+	const errorData = useSelector(getProfileError) || undefined;
+	const isLoading = useSelector(getProfileIsLoading) || undefined;
+
 	useEffect(() => {
 		dispatch(fetchProfileData());
 	}, [dispatch]);
@@ -30,7 +44,11 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 	return (
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<div className={classNames(cls.ProfilePage, {}, [className])}>
-				<ProfileCard />
+				<ProfileCard
+					data={data}
+					isLoading={isLoading}
+					errorData={errorData}
+				/>
 			</div>
 		</DynamicModuleLoader>
 	);

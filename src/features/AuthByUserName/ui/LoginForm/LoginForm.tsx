@@ -1,10 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import Button from 'shared/ui/Button/Button';
-import Input from 'shared/ui/Input/Input';
-import { useSelector } from 'react-redux';
 import { memo, useCallback, useEffect, useState } from 'react';
-import Text from 'shared/ui/Text/Text';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { v4 as uuidv4 } from 'uuid';
+
 import {
 	loginAction,
 	loginReducer,
@@ -15,11 +13,16 @@ import {
 	getLoginError,
 } from 'features/AuthByUserName';
 
+import { classNames } from 'shared/lib/classNames/classNames';
+import Button from 'shared/ui/Button/Button';
+import Input from 'shared/ui/Input/Input';
+import Text from 'shared/ui/Text/Text';
 import {
 	DynamicModuleLoader,
 	ReducerList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
@@ -56,8 +59,7 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 	);
 
 	const onLoginClick = useCallback(async () => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const result = await dispatch<any>(loginByUsername({ username, password }));
+		const result = await dispatch(loginByUsername({ username, password }));
 		if (result.meta.requestStatus === 'fulfilled') onSuccess();
 	}, [dispatch, username, password, onSuccess]);
 
@@ -74,10 +76,10 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 			<div className={classNames(cls.LoginForm, {}, [className])}>
 				<Text title="Окно авторизации" />
 				<Input
+					autoFocus
 					type="text"
 					className={cls.input}
 					placeholder={t('Введите username')}
-					autoFocus
 					onChange={onChangeUsername}
 					value={username}
 				/>
@@ -88,14 +90,6 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 					onChange={onChangePassword}
 					value={password}
 				/>
-				{/* {errorState.map((_, i) => (
-				<Text
-					title="erors"
-					textError={{ message: error }}
-					theme={TextTheme.ERROR}
-					key={error}
-				/>
-			))} */}
 				<Button
 					className={cls.loginBtb}
 					onClick={onLoginClick}

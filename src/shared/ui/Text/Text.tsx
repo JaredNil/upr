@@ -1,5 +1,7 @@
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 import cls from './Text.module.scss';
 
 export enum TextTheme {
@@ -34,6 +36,10 @@ const Text: React.FC<TextProps> = memo((props: TextProps) => {
 		[cls[theme]]: true,
 		[cls[align]]: true,
 	};
+
+	const paragramNotion = [];
+	paragramNotion.push(title);
+	paragramNotion.push(text);
 
 	return (
 		<div className={classNames(cls.Text, mods, [className])}>

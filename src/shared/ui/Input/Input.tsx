@@ -1,72 +1,90 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { InputHTMLAttributes, memo, useEffect, useState } from 'react';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import React, { InputHTMLAttributes, memo, useEffect, useRef, useState } from 'react';
 import cls from './Input.module.scss';
 
-interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
+type HTMLInputProps = Omit<
+	InputHTMLAttributes<HTMLInputElement>,
+	'value' | 'onChange' | 'readOnly'
+>;
+
+interface InputProps extends HTMLInputProps {
 	className?: string;
-	value?: string;
+	value?: string | number;
 	onChange?: (value: string) => void;
+	autofocus?: boolean;
+	readonly?: boolean;
 }
 
-const Input: React.FC<InputProps> = memo((props: InputProps) => {
+const Input = memo((props: InputProps) => {
 	const {
 		className,
 		value,
 		onChange,
 		type = 'text',
-		autoFocus,
 		placeholder,
+		autofocus,
+		readonly,
 		...otherProps
 	} = props;
-
+	const ref = useRef<HTMLInputElement>(null);
 	const [isFocused, setIsFocused] = useState(false);
-	const [caretPos, setCaretPos] = useState(0);
+	const [caretPosition, setCaretPosition] = useState(0);
+
+	const isCaretVisible = isFocused && !readonly;
+
+	useEffect(() => {
+		if (autofocus) {
+			setIsFocused(true);
+			ref.current?.focus();
+		}
+	}, [autofocus]);
 
 	const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange?.(e.target.value);
-		setCaretPos(e.target.value.length);
+		setCaretPosition(e.target.value.length);
 	};
 
 	const onBlur = () => {
 		setIsFocused(false);
 	};
+
 	const onFocus = () => {
 		setIsFocused(true);
 	};
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 	const onSelect = (e: any) => {
-		setCaretPos(e?.target?.selectionStart || 0);
+		setCaretPosition(e?.target?.selectionStart || 0);
 	};
 
-	useEffect(() => {
-		if (autoFocus) {
-			setIsFocused(true);
-		}
-	}, [autoFocus]);
+	const mods: Mods = {
+		[cls.readonly]: readonly,
+	};
 
 	return (
 		<div className={classNames(cls.InputWrapper, {}, [className])}>
 			{placeholder && (
-				<div
-					className={cls.placeholder}
-				>{`${placeholder}>`}</div>
+				<div className={cls.placeholder}>
+					{`${placeholder}>`}
+				</div>
 			)}
 			<div className={cls.caterWrapper}>
 				<input
 					className={cls.input}
 					type={type}
+					ref={ref}
 					value={value}
 					onChange={onChangeHandler}
 					onFocus={onFocus}
 					onBlur={onBlur}
 					onSelect={onSelect}
+					readOnly={readonly}
 					{...otherProps}
 				/>
-				{isFocused && (
+				{isCaretVisible && (
 					<span
 						className={cls.caret}
 						style={{
-							left: `${caretPos * 7.6}px`,
+							left: `${caretPosition * 7.6}px`,
 						}}
 					/>
 				)}

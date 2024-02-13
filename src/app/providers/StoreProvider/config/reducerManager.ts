@@ -12,7 +12,8 @@ export function createReducerManager(
 
 	return {
 		getReducerMap: () => reducers,
-		reduce: (state: Partial<StateSchema>, action: UnknownAction) => {
+
+		reduce: (state, action: UnknownAction) => {
 			if (keysToRemove.length > 0) {
 				state = { ...state };
 				for (let key of keysToRemove) {
@@ -20,7 +21,8 @@ export function createReducerManager(
 				}
 				keysToRemove = [];
 			}
-			return combinedReducer((state = {}), action);
+			// @ts-ignore
+			return combinedReducer(state, action);
 		},
 
 		add: (key: StateSchemaKey, reducer: Reducer) => {

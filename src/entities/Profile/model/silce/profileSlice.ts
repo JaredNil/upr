@@ -13,22 +13,25 @@ export const profileSlice = createSlice({
 	name: 'profile',
 	initialState,
 	reducers: {
-		// setAuthData: (state, action: PayloadAction<Profile>) => {
-		// 	state.authData = action.payload;
-		// },
+		setReadonly: (state, action: PayloadAction<boolean>) => {
+			state.readonly = action.payload;
+		},
+		updateProfile: (state, action: PayloadAction<Profile>) => {
+			state.data = {
+				...state.data,
+				...action.payload,
+			};
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchProfileData.pending, (state) => {
 			state.error = '';
 			state.isLoading = true;
 		});
-		builder.addCase(
-			fetchProfileData.fulfilled,
-			(state, action: PayloadAction<Profile>) => {
-				state.isLoading = false;
-				state.data = action.payload;
-			}
-		);
+		builder.addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
+			state.isLoading = false;
+			state.data = action.payload;
+		});
 		builder.addCase(fetchProfileData.rejected, (state, action) => {
 			state.isLoading = false;
 			state.error = action.error;

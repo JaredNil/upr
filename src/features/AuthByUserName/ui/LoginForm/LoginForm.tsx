@@ -1,7 +1,6 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { v4 as uuidv4 } from 'uuid';
 
 import {
 	loginAction,
@@ -17,10 +16,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import Button from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
 import Text from 'shared/ui/Text/Text';
-import {
-	DynamicModuleLoader,
-	ReducerList,
-} from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import cls from './LoginForm.module.scss';
@@ -90,11 +86,7 @@ const LoginForm: React.FC<LoginFormProps> = memo((props: LoginFormProps) => {
 					onChange={onChangePassword}
 					value={password}
 				/>
-				<Button
-					className={cls.loginBtb}
-					onClick={onLoginClick}
-					disabled={isLoading}
-				>
+				<Button className={cls.loginBtb} onClick={onLoginClick} disabled={isLoading}>
 					{t('Войти')}
 				</Button>
 			</div>

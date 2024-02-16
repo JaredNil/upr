@@ -14,11 +14,7 @@ const MainPage: React.FC = () => {
 	return (
 		<div>
 			{/* <BugButton /> */}
-			<Input
-				value={value}
-				onChange={onChange}
-				placeholder="Введите текст"
-			/>
+			<Input value={value} onChange={onChange} placeholder="Введите текст" />
 			{t('Главная_титул')}
 		</div>
 	);

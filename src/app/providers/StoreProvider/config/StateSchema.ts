@@ -1,11 +1,4 @@
-import {
-	Dispatch,
-	EnhancedStore,
-	Reducer,
-	ReducersMapObject,
-	UnknownAction,
-	combineReducers,
-} from '@reduxjs/toolkit';
+import { Dispatch, EnhancedStore, Reducer, ReducersMapObject, UnknownAction, combineReducers } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
@@ -35,6 +28,7 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 export interface ThunkConfig<T> {
 	serializedErrorType: T;
 	extra: ThunkExtraArg;
+	state: StateSchema;
 }
 
 export interface ThunkExtraArg {

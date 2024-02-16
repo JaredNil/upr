@@ -3,7 +3,7 @@ import { Country, Currency } from 'shared/const/common';
 export interface Profile {
 	first?: string;
 	lastname?: string;
-	age?: 22;
+	age?: string | number;
 	currency?: Currency;
 	country?: Country;
 	city?: string;
@@ -12,7 +12,8 @@ export interface Profile {
 }
 
 export interface ProfileSchema {
-	data?: Profile;
+	data: Profile;
+	form: Profile;
 	isLoading: boolean;
 	error?: string;
 	readonly: boolean;

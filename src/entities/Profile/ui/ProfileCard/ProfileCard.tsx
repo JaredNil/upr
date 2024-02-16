@@ -1,34 +1,33 @@
 import { useTranslation } from 'react-i18next';
-import { v4 as uuidv4 } from 'uuid';
 
 import Text, { TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { classNames } from 'shared/lib/classNames/classNames';
-import Button, { ButtonTheme } from 'shared/ui/Button/Button';
 import Input from 'shared/ui/Input/Input';
 
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../../../Profile/model/types/profile';
 import PageLoader from 'widgets/PageLoader/PageLoader';
+import { memo } from 'react';
 
 interface ProfileCardProps {
 	className?: string;
-	data?: Profile;
+	data: Profile;
 	isLoading?: boolean;
 	errorData?: string;
-	onChangeFirstname?: (value?: string) => void;
-	onChangeLastname?: (value?: string) => void;
+	onChangeFirstname: (value?: string) => void;
+	onChangeLastname: (value?: string) => void;
+	onChangeAge: (value?: string | number) => void;
+	onChangeCity: (value?: string) => void;
+	readonly: boolean;
 }
 
-export const ProfileCard: React.FC<ProfileCardProps> = (props: ProfileCardProps) => {
-	const { className, data, isLoading, errorData, onChangeFirstname, onChangeLastname } = props;
+export const ProfileCard: React.FC<ProfileCardProps> = memo((props: ProfileCardProps) => {
+	const { className, data, isLoading, errorData, onChangeFirstname, onChangeLastname, onChangeAge, onChangeCity, readonly } = props;
 
-	if (data) {
-		const { first, lastname, age, currency, country, city, username, avatar } = data;
-	}
 	const { t } = useTranslation();
 
 	return (
-		<div className={classNames(cls.ProfileCard, {}, [className])} key={uuidv4()}>
+		<div className={classNames(cls.ProfileCard, {}, [className])}>
 			{isLoading && <PageLoader />}
 			{errorData && (
 				<Text
@@ -42,19 +41,36 @@ export const ProfileCard: React.FC<ProfileCardProps> = (props: ProfileCardProps)
 				<>
 					<div className={cls.data}>
 						<Input
-							value={data?.first}
 							placeholder={t('Ваше имя')}
 							className={cls.input}
 							onChange={onChangeFirstname}
+							value={data?.first}
+							readonly={readonly}
 						/>
 						<Input
-							value={data?.lastname}
 							placeholder={t('Ваша фамилия')}
 							className={cls.input}
+							onChange={onChangeLastname}
+							value={data?.lastname}
+							readonly={readonly}
+						/>
+						<Input
+							placeholder={t('Ваш возраст')}
+							className={cls.input}
+							onChange={onChangeAge}
+							value={data?.age}
+							readonly={readonly}
+						/>
+						<Input
+							placeholder={t('Ваш город')}
+							className={cls.input}
+							onChange={onChangeCity}
+							value={data?.city}
+							readonly={readonly}
 						/>
 					</div>
 				</>
 			)}
 		</div>
 	);
-};
+});

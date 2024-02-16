@@ -2,7 +2,16 @@ import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { getProfileError, getProfileIsLoading, getProfileData, ProfileCard, fetchProfileData, profileReducer, profileAction } from 'entities/Profile';
+import {
+	getProfileError,
+	getProfileIsLoading,
+	ProfileCard,
+	fetchProfileData,
+	profileReducer,
+	profileAction,
+	getProfileReadOnly,
+	getProfileForm,
+} from 'entities/Profile';
 
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -24,23 +33,39 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 
 	const dispatch = useAppDispatch();
 
-	const data = useSelector(getProfileData) || undefined;
-	const errorData = useSelector(getProfileError) || undefined;
-	const isLoading = useSelector(getProfileIsLoading) || undefined;
+	const formData = useSelector(getProfileForm);
+	const errorData = useSelector(getProfileError);
+	const isLoading = useSelector(getProfileIsLoading);
+	const readonly = useSelector(getProfileReadOnly);
 
 	useEffect(() => {
 		dispatch(fetchProfileData());
 	}, [dispatch]);
 
 	const onChangeFirstname = useCallback(
-		(value: string) => {
+		(value?: string) => {
 			dispatch(profileAction.updateProfile({ first: value || '' }));
 		},
 		[dispatch]
 	);
+
 	const onChangeLastname = useCallback(
-		(value: string) => {
+		(value?: string) => {
 			dispatch(profileAction.updateProfile({ lastname: value || '' }));
+		},
+		[dispatch]
+	);
+
+	const onChangeAge = useCallback(
+		(value?: string | number) => {
+			dispatch(profileAction.updateProfile({ age: Number(value) || '' }));
+		},
+		[dispatch]
+	);
+
+	const onChangeCity = useCallback(
+		(value?: string) => {
+			dispatch(profileAction.updateProfile({ city: value || '' }));
 		},
 		[dispatch]
 	);
@@ -50,11 +75,14 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 			<div className={classNames(cls.ProfilePage, {}, [className])}>
 				<ProfilePageHeader />
 				<ProfileCard
-					data={data}
+					data={formData || {}}
 					isLoading={isLoading}
-					errorData={errorData}
+					errorData={errorData || undefined}
 					onChangeFirstname={onChangeFirstname}
 					onChangeLastname={onChangeLastname}
+					onChangeAge={onChangeAge}
+					onChangeCity={onChangeCity}
+					readonly={readonly ? true : false}
 				/>
 			</div>
 		</DynamicModuleLoader>

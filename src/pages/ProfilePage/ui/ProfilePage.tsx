@@ -19,6 +19,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from 'entities/Profile';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
 
 interface ProfilePageProps {
 	className?: string;
@@ -70,6 +72,34 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 		[dispatch]
 	);
 
+	const onChangeUsername = useCallback(
+		(value?: string) => {
+			dispatch(profileAction.updateProfile({ username: value || '' }));
+		},
+		[dispatch]
+	);
+
+	const onChangeAvatar = useCallback(
+		(value?: string) => {
+			dispatch(profileAction.updateProfile({ avatar: value || '' }));
+		},
+		[dispatch]
+	);
+
+	const onChangeCurrency = useCallback(
+		(currency?: Currency) => {
+			dispatch(profileAction.updateProfile({ currency: currency || Currency.RUB }));
+		},
+		[dispatch]
+	);
+
+	const onChangeCountry = useCallback(
+		(country?: Country) => {
+			dispatch(profileAction.updateProfile({ country: country || Country.Russia }));
+		},
+		[dispatch]
+	);
+
 	return (
 		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
 			<div className={classNames(cls.ProfilePage, {}, [className])}>
@@ -82,6 +112,10 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 					onChangeLastname={onChangeLastname}
 					onChangeAge={onChangeAge}
 					onChangeCity={onChangeCity}
+					onChangeUsername={onChangeUsername}
+					onChangeAvatar={onChangeAvatar}
+					onChangeCurrency={onChangeCurrency}
+					onChangeCountry={onChangeCountry}
 					readonly={readonly ? true : false}
 				/>
 			</div>

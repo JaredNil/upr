@@ -25,14 +25,7 @@ const Sidebar: React.FC<SidebarProps> = memo(({ className, children }: SidebarPr
 	};
 
 	const itemsList: ReactNode = useMemo(
-		() =>
-			SidebarItemList.map((item) => (
-				<SidebarItem
-					key={uuidv4()}
-					item={item}
-					collapsed={collapsed}
-				/>
-			)),
+		() => SidebarItemList.map((item) => <SidebarItem key={uuidv4()} item={item} collapsed={collapsed} />),
 		[collapsed]
 	);
 

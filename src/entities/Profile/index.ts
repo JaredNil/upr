@@ -14,5 +14,6 @@ import { getProfileError } from './model/selectors/getProfileError/getProfileErr
 import { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
 import { getProfileReadOnly } from './model/selectors/getProfileReadOnly/getProfileReadOnly';
 import { getProfileForm } from './model/selectors/getProfileForm/getProfileForm';
+import { getProfileValidateError } from './model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 
-export { getProfileData, getProfileError, getProfileIsLoading, getProfileReadOnly, getProfileForm };
+export { getProfileData, getProfileValidateError, getProfileError, getProfileIsLoading, getProfileReadOnly, getProfileForm };

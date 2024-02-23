@@ -7,12 +7,7 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import { type BuildOptions } from './types/config';
 
-export function buildPlugins({
-	apiUrl,
-	paths,
-	isDev,
-	project,
-}: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ apiUrl, paths, isDev, project }: BuildOptions): webpack.WebpackPluginInstance[] {
 	const plugins = [
 		new HtmlWebpackPlugin({
 			template: paths.html,
@@ -33,10 +28,10 @@ export function buildPlugins({
 		new BundleAnalyzerPlugin({
 			openAnalyzer: true,
 		}),
-		new BundleAnalyzerPlugin({
-			openAnalyzer: false,
-			analyzerPort: 'auto',
-		}),
+		// new BundleAnalyzerPlugin({
+		// 	openAnalyzer: false,
+		// 	analyzerPort: 'auto',
+		// }),
 	];
 
 	if (isDev) {

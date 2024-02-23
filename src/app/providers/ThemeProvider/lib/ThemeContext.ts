@@ -3,10 +3,11 @@ import { type MouseEventHandler, createContext } from 'react';
 export enum Theme {
 	LIGHT = 'app_light_theme',
 	DARK = 'app_dark_theme',
+	ORANGE = 'app_orange_theme',
 }
 
 export interface ThemeContextProps {
-	setTheme?: (theme: Theme, event?: MouseEventHandler<HTMLButtonElement>) => void;
+	setTheme?: (theme: Theme) => void;
 	theme?: Theme;
 }
 

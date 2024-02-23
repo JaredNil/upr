@@ -1,10 +1,10 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, useEffect } from 'react';
 
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router/index';
 
-import { userAction } from 'entities/User';
+import { getUserInited, userAction } from 'entities/User';
 
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
@@ -14,6 +14,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 const App: React.FC = () => {
 	const { theme } = useTheme();
 	const dispatch = useDispatch();
+
+	const inited = useSelector(getUserInited);
 
 	useEffect(() => {
 		dispatch(userAction.initAuthData());
@@ -26,7 +28,7 @@ const App: React.FC = () => {
 
 				<main className="content">
 					<Sidebar />
-					<AppRouter />
+					{inited && <AppRouter />}
 				</main>
 			</Suspense>
 		</div>

@@ -25,9 +25,9 @@ export function buildPlugins({ apiUrl, paths, isDev, project }: BuildOptions): w
 		new CopyPlugin({
 			patterns: [{ from: paths.locales, to: paths.buildLocales }],
 		}),
-		new BundleAnalyzerPlugin({
-			openAnalyzer: true,
-		}),
+		// new BundleAnalyzerPlugin({
+		// 	openAnalyzer: true,
+		// }),
 		// new BundleAnalyzerPlugin({
 		// 	openAnalyzer: false,
 		// 	analyzerPort: 'auto',

@@ -8,6 +8,8 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
+import Text, { TextAlign } from 'shared/ui/Text/Text';
+import Skeleton from 'shared/ui/Skeleton/Skeleton';
 
 interface ArticleDetailsProps {
 	className?: string;
@@ -23,7 +25,8 @@ export const ArticleDetails: React.FC<ArticleDetailsProps> = memo((props: Articl
 	const { t } = useTranslation('article');
 	const dispatch = useAppDispatch();
 
-	const isLoading = useSelector(getArticleDetailsIsLoading);
+	// const isLoading = useSelector(getArticleDetailsIsLoading);
+	const isLoading = true;
 	const data = useSelector(getArticleDetailsData);
 	const error = useSelector(getArticleDetailsError);
 
@@ -34,9 +37,17 @@ export const ArticleDetails: React.FC<ArticleDetailsProps> = memo((props: Articl
 	let content;
 
 	if (isLoading) {
-		content = <div>Loading...</div>;
+		content = (
+			<div>
+				<Skeleton width={200} height={200} border={'50%'} />
+				<Skeleton width={300} height={32} border={'50%'} />
+				<Skeleton width={600} height={24} border={'50%'} />
+				<Skeleton width={'100%'} height={200} />
+				<Skeleton width={'100%'} height={200} />
+			</div>
+		);
 	} else if (error) {
-		content = <div>error</div>;
+		content = <Text align={TextAlign.CENTER} title={'Произошла ошибка при загрузке статьи.'} />;
 	} else {
 		content = <div className={classNames(cls.ArticleDetails, {}, [className])}>ArticleDetailsProps</div>;
 	}

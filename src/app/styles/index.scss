@@ -38,4 +38,6 @@ main.content {
 .page-wrapper {
     flex-grow: 1;
     padding: 20px;
+    height: calc(100vh - var(--navber-height));
+    overflow-y: auto;
 }

@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { memo, useCallback, useState } from 'react';
-import Button, { ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUserName';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,35 +34,17 @@ const Navbar: React.FC<NavbarProps> = memo(({ className }: NavbarProps) => {
 
 	return authData ? ( // authorization button return
 		<div className={classNames(cls.Navbar, {}, [className])}>
-			<Button
-				theme={ButtonTheme.OUTLINE}
-				className={classNames(cls.links)}
-				type="button"
-				onClick={() => onLogout()}
-			>
+			<Button theme={ButtonTheme.OUTLINE} className={classNames(cls.links)} type="button" onClick={() => onLogout()}>
 				{t('Выйти')}
 			</Button>
-			<LoginModal
-				isOpen={isAuthModal}
-				onClose={() => onCloseModal()}
-			/>
+			<LoginModal isOpen={isAuthModal} onClose={() => onCloseModal()} />
 		</div>
 	) : (
 		<div className={classNames(cls.Navbar, {}, [className])}>
-			<Button
-				theme={ButtonTheme.OUTLINE}
-				className={classNames(cls.links)}
-				type="button"
-				onClick={() => onShowModal()}
-			>
+			<Button theme={ButtonTheme.OUTLINE} className={classNames(cls.links)} type="button" onClick={() => onShowModal()}>
 				{t('Войти')}
 			</Button>
-			{isAuthModal && (
-				<LoginModal
-					isOpen={isAuthModal}
-					onClose={() => onCloseModal()}
-				/>
-			)}
+			{isAuthModal && <LoginModal isOpen={isAuthModal} onClose={() => onCloseModal()} />}
 		</div>
 	);
 });

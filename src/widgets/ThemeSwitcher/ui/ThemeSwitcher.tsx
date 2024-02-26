@@ -5,7 +5,7 @@ import { useTheme } from 'app/providers/ThemeProvider';
 
 import ButtonIcon from 'widgets/assets/ThemeSwitcher/ThemeSwitcher-button.svg';
 
-import Button, { ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 import cls from './ThemeSwitcher.module.scss';
 
@@ -17,11 +17,7 @@ const ThemeSwitcher: React.FC<ThemeSwitcherProps> = memo(({ className }: ThemeSw
 	const { theme, toggleTheme } = useTheme();
 
 	return (
-		<Button
-			className={classNames(cls.ThemeSwitcher, {}, [className])}
-			theme={ButtonTheme.CLEAR}
-			onClick={toggleTheme}
-		>
+		<Button className={classNames(cls.ThemeSwitcher, {}, [className])} theme={ButtonTheme.CLEAR} onClick={toggleTheme}>
 			<ButtonIcon className={classNames(cls.ThemeSwitcher_btn)} />
 		</Button>
 	);

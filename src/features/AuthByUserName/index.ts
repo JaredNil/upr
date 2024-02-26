@@ -1,10 +1,4 @@
-export {
-	getLoginState,
-	getLoginUsername,
-	getLoginIsLoading,
-	getLoginError,
-	getLoginPassword,
-} from './model/selector/getLoginState';
+export { getLoginState, getLoginUsername, getLoginIsLoading, getLoginError, getLoginPassword } from './model/selector/getLoginState';
 
 export { loginByUsername } from './model/service/loginByUsername/loginByUsername';
 

@@ -15,11 +15,7 @@ export const LoginModal: React.FC<LoginModalProps> = (props: LoginModalProps) =>
 	const { className, isOpen, onClose } = props;
 
 	return (
-		<Modal
-			className={classNames(cls.LoginModal, {}, [className])}
-			isOpen={isOpen}
-			onClose={onClose}
-		>
+		<Modal className={classNames(cls.LoginModal, {}, [className])} isOpen={isOpen} onClose={onClose}>
 			<Suspense fallback="">
 				<LoginFormAsync onSuccess={onClose} />
 			</Suspense>

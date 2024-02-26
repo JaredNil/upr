@@ -4,8 +4,6 @@ import Text, { TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import Input from 'shared/ui/Input/Input';
 
-import cls from './ProfileCard.module.scss';
-import { Profile } from '../../../Profile/model/types/profile';
 import PageLoader from 'widgets/PageLoader/PageLoader';
 import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
@@ -13,7 +11,9 @@ import { Select } from 'shared/ui/Select/Select';
 import { Currency } from 'entities/Currency/model/types/currency';
 import { CurrencySelect } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import { CountrySelect } from './../../../Country/ui/CountrySelect/CountrySelect';
+import { Profile } from '../../model/types/profile';
+import cls from './ProfileCard.module.scss';
+import { CountrySelect } from '../../../Country/ui/CountrySelect/CountrySelect';
 
 interface ProfileCardProps {
 	className?: string;
@@ -66,69 +66,67 @@ export const ProfileCard: React.FC<ProfileCardProps> = memo((props: ProfileCardP
 				/>
 			)}
 			{!isLoading && !errorData && (
-				<>
-					<div className={cls.data}>
-						{data?.avatar && (
-							<div className={cls.avatarWrapper}>
-								<Avatar src={data?.avatar} />
-							</div>
-						)}
-						<Input
-							placeholder={t('Ваше имя')}
-							className={cls.input}
-							onChange={onChangeFirstname}
-							value={data?.first}
-							readonly={readonly}
-						/>
-						<Input
-							placeholder={t('Ваша фамилия')}
-							className={cls.input}
-							onChange={onChangeLastname}
-							value={data?.lastname}
-							readonly={readonly}
-						/>
-						<Input
-							placeholder={t('Ваш возраст')}
-							className={cls.input}
-							onChange={onChangeAge}
-							value={data?.age}
-							readonly={readonly}
-						/>
-						<Input
-							placeholder={t('Город')}
-							className={cls.input}
-							onChange={onChangeCity}
-							value={data?.city}
-							readonly={readonly}
-						/>
-						<Input
-							placeholder={t('Введите имя пользователя')}
-							className={cls.input}
-							onChange={onChangeUsername}
-							value={data?.username}
-							readonly={readonly}
-						/>
-						<Input
-							placeholder={t('Введите ссылку на аватар')}
-							className={cls.input}
-							onChange={onChangeAvatar}
-							value={data?.avatar}
-							readonly={readonly}
-						/>
-						<CurrencySelect
-							className={cls.input}
-							value={data?.currency}
-							onChange={onChangeCurrency}
-							readonly={readonly}
-						/>
-						<CountrySelect
-							className={cls.input}
-							value={data?.country}
-							onChange={onChangeCountry}
-							readonly={readonly}
-						/>
-					</div>
-				</>
+				<div className={cls.data}>
+					{data?.avatar && (
+						<div className={cls.avatarWrapper}>
+							<Avatar src={data?.avatar} />
+						</div>
+					)}
+					<Input
+						placeholder={t('Ваше имя')}
+						className={cls.input}
+						onChange={onChangeFirstname}
+						value={data?.first}
+						readonly={readonly}
+					/>
+					<Input
+						placeholder={t('Ваша фамилия')}
+						className={cls.input}
+						onChange={onChangeLastname}
+						value={data?.lastname}
+						readonly={readonly}
+					/>
+					<Input
+						placeholder={t('Ваш возраст')}
+						className={cls.input}
+						onChange={onChangeAge}
+						value={data?.age}
+						readonly={readonly}
+					/>
+					<Input
+						placeholder={t('Город')}
+						className={cls.input}
+						onChange={onChangeCity}
+						value={data?.city}
+						readonly={readonly}
+					/>
+					<Input
+						placeholder={t('Введите имя пользователя')}
+						className={cls.input}
+						onChange={onChangeUsername}
+						value={data?.username}
+						readonly={readonly}
+					/>
+					<Input
+						placeholder={t('Введите ссылку на аватар')}
+						className={cls.input}
+						onChange={onChangeAvatar}
+						value={data?.avatar}
+						readonly={readonly}
+					/>
+					<CurrencySelect
+						className={cls.input}
+						value={data?.currency}
+						onChange={onChangeCurrency}
+						readonly={readonly}
+					/>
+					<CountrySelect
+						className={cls.input}
+						value={data?.country}
+						onChange={onChangeCountry}
+						readonly={readonly}
+					/>
+				</div>
 			)}
 		</div>
 	);

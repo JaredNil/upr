@@ -12,18 +12,18 @@ import {
 	getProfileReadOnly,
 	getProfileForm,
 	getProfileValidateError,
+	ProfilePageHeader,
 } from 'entities/Profile';
 
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
-import cls from './ProfilePage.module.scss';
-import { ProfilePageHeader } from 'entities/Profile';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import Text, { TextTheme } from 'shared/ui/Text/Text';
 import { ValidateProfileError } from 'entities/Profile/model/types/profile';
+import cls from './ProfilePage.module.scss';
 
 interface ProfilePageProps {
 	className?: string;
@@ -132,7 +132,7 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 					onChangeAvatar={onChangeAvatar}
 					onChangeCurrency={onChangeCurrency}
 					onChangeCountry={onChangeCountry}
-					readonly={readonly ? true : false}
+					readonly={!!readonly}
 				/>
 			</div>
 		</DynamicModuleLoader>

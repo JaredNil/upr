@@ -11,18 +11,10 @@ interface StoreProviderProps {
 	asyncReducers?: Partial<ReducersMapObject<StateSchema>>;
 }
 
-const StoreProvider: React.FC<StoreProviderProps> = ({
-	children,
-	initialState,
-	asyncReducers,
-}: StoreProviderProps) => {
+const StoreProvider: React.FC<StoreProviderProps> = ({ children, initialState, asyncReducers }: StoreProviderProps) => {
 	const navigate = useNavigate();
 
-	const store = createReduxStore(
-		initialState as StateSchema,
-		asyncReducers as ReducersMapObject<StateSchema>,
-		navigate
-	);
+	const store = createReduxStore(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>, navigate);
 
 	return <Provider store={store}>{children}</Provider>;
 };

@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Suspense, useEffect } from 'react';
 
-import { useTheme } from './providers/ThemeProvider';
-import { AppRouter } from './providers/router/index';
-
 import { getUserInited, userAction } from 'entities/User';
 
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
 
 import { classNames } from 'shared/lib/classNames/classNames';
+import { AppRouter } from './providers/router/index';
+import { useTheme } from './providers/ThemeProvider';
 
 const App: React.FC = () => {
 	const { theme } = useTheme();

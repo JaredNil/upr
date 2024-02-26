@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from 'shared/lib/classNames/classNames';
-import Button, { ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 import cls from './LangSwitcher.module.scss';
 
@@ -17,11 +17,7 @@ const LangSwitcher: React.FC<LangSwitcherProps> = memo(({ className }: LangSwitc
 		await i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
 	};
 	return (
-		<Button
-			className={classNames(cls.LangSwither, {}, [className])}
-			theme={ButtonTheme.CLEAR}
-			onClick={toggle}
-		>
+		<Button className={classNames(cls.LangSwither, {}, [className])} theme={ButtonTheme.CLEAR} onClick={toggle}>
 			{t('Язык')}
 		</Button>
 	);

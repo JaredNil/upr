@@ -1,6 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './ProfilePageHeader.module.scss';
-import Button, { ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import Text from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -8,6 +7,7 @@ import { getProfileReadOnly } from 'entities/Profile/model/selectors/getProfileR
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { memo, useCallback } from 'react';
 import { profileAction, updateProfileData } from 'entities/Profile';
+import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
 	className?: string;

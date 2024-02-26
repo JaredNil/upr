@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import LangSwitcher from 'widgets/LangSwitcher/LangSwitcher';
 
-import Button, { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import { SidebarItemList } from 'widgets/Sidebar/model/items';

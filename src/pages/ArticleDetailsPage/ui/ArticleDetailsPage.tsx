@@ -1,5 +1,5 @@
 import { ArticleDetails } from 'entities/Article';
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -8,10 +8,12 @@ import { CommentList } from 'entities/Comment';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AddCommentForm } from 'features/addCommentForm';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsCommentsReducer, getArticleComments } from '../model/slices/articleDetailsCommentsSlice';
 import { getArticleCommentsError, getArticleCommentsIsLoading } from '../model/selectors/comments';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { addCommentForArticle } from '../model/services/addCommentForArticle/addCommentForArticle';
 
 const reducers: ReducerList = {
 	articleDetailsComments: articleDetailsCommentsReducer,
@@ -32,6 +34,13 @@ const ArticleDetailsPage: React.FC = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch]);
 
+	const onSendComment = useCallback(
+		(text: string) => {
+			dispatch(addCommentForArticle(text));
+		},
+		[dispatch]
+	);
+
 	if (!id) {
 		return <div className={classNames(cls.ArticleDetailsPage, {}, [])}>{t('Статья не найдена')}</div>;
 	}
@@ -41,6 +50,7 @@ const ArticleDetailsPage: React.FC = () => {
 			<div className={classNames(cls.ArticleDetailsPage, {}, [])}>
 				<ArticleDetails id={id} />
 				<Text title={t('Комментарии')} />
+				<AddCommentForm onSendComment={onSendComment} />
 				<CommentList isLoading={commentsIsLoading} comments={comments} />
 			</div>
 		</DynamicModuleLoader>

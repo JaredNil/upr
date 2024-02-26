@@ -1,7 +1,7 @@
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
-import { SidebarItemType } from 'widgets/Sidebar/model/items';
+import { SidebarItemType } from 'widgets/Sidebar/model/types/sidebar';
 
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';

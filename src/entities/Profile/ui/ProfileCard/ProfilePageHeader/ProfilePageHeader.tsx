@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import Text from 'shared/ui/Text/Text';
+import { Text } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getProfileReadOnly } from 'entities/Profile/model/selectors/getProfileReadOnly/getProfileReadOnly';

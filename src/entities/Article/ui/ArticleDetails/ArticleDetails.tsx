@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
-import Text, { TextAlign, TextSize } from 'shared/ui/Text/Text';
-import Skeleton from 'shared/ui/Skeleton/Skeleton';
+import { Text, TextAlign, TextSize } from 'shared/ui/Text/Text';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 
 import EyeIcon from 'shared/assets/eye-20-20.svg';
@@ -52,7 +52,7 @@ export const ArticleDetails: React.FC<ArticleDetailsProps> = memo((props: Articl
 
 	useEffect(() => {
 		dispatch(fetchArticleById(id));
-	}, [dispatch]);
+	}, [dispatch, id]);
 
 	let content;
 

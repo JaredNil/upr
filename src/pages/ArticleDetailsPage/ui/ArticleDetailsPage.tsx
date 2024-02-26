@@ -1,19 +1,50 @@
 import { ArticleDetails } from 'entities/Article';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text } from 'shared/ui/Text/Text';
+import { CommentList } from 'entities/Comment';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './ArticleDetailsPage.module.scss';
+import { articleDetailsCommentsReducer, getArticleComments } from '../model/slices/articleDetailsCommentsSlice';
+import { getArticleCommentsError, getArticleCommentsIsLoading } from '../model/selectors/comments';
+import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+
+const reducers: ReducerList = {
+	articleDetailsComments: articleDetailsCommentsReducer,
+};
 
 const ArticleDetailsPage: React.FC = () => {
 	const { t } = useTranslation('article-details');
 	const { id } = useParams<{ id: string }>();
 
+	const comments = useSelector(getArticleComments.selectAll);
+	const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+	const commentsErrors = useSelector(getArticleCommentsError);
+
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(fetchCommentsByArticleId(id));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [dispatch]);
+
 	if (!id) {
 		return <div className={classNames(cls.ArticleDetailsPage, {}, [])}>{t('Статья не найдена')}</div>;
 	}
 
-	return <ArticleDetails id={id} />;
+	return (
+		<DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+			<div className={classNames(cls.ArticleDetailsPage, {}, [])}>
+				<ArticleDetails id={id} />
+				<Text title={t('Комментарии')} />
+				<CommentList isLoading={commentsIsLoading} comments={comments} />
+			</div>
+		</DynamicModuleLoader>
+	);
 };
 
 export default memo(ArticleDetailsPage);

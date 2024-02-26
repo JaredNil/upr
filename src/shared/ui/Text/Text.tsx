@@ -29,7 +29,7 @@ interface TextProps {
 	size?: TextSize;
 }
 
-const Text: React.FC<TextProps> = memo((props: TextProps) => {
+export const Text: React.FC<TextProps> = memo((props: TextProps) => {
 	const { title, text, className, theme = TextTheme.PRIMARY, align = TextAlign.LEFT, size = TextSize.M } = props;
 
 	const mods: Mods = {
@@ -49,5 +49,3 @@ const Text: React.FC<TextProps> = memo((props: TextProps) => {
 		</div>
 	);
 });
-
-export default Text;

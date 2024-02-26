@@ -12,7 +12,7 @@ interface InputProps extends HTMLInputProps {
 	readonly?: boolean;
 }
 
-const Input = memo((props: InputProps) => {
+export const Input = memo((props: InputProps) => {
 	const { className, value, onChange, type = 'text', placeholder, autofocus, readonly, ...otherProps } = props;
 	const ref = useRef<HTMLInputElement>(null);
 	const [isFocused, setIsFocused] = useState(false);
@@ -76,5 +76,3 @@ const Input = memo((props: InputProps) => {
 		</div>
 	);
 });
-
-export default Input;

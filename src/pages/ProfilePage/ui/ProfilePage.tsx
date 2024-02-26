@@ -21,7 +21,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import Text, { TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ValidateProfileError } from 'entities/Profile/model/types/profile';
 import cls from './ProfilePage.module.scss';
 

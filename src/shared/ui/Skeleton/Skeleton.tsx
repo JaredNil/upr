@@ -9,7 +9,7 @@ interface SkeletonProps {
 	border?: string;
 }
 
-const Skeleton: React.FC<SkeletonProps> = (props: SkeletonProps) => {
+export const Skeleton: React.FC<SkeletonProps> = (props: SkeletonProps) => {
 	const { className, border, height, width } = props;
 
 	const styles: CSSProperties = {
@@ -24,5 +24,3 @@ const Skeleton: React.FC<SkeletonProps> = (props: SkeletonProps) => {
 		</div>
 	);
 };
-
-export default Skeleton;

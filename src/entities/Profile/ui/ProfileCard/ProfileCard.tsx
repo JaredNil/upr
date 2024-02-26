@@ -1,13 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import Text, { TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
-import Input from 'shared/ui/Input/Input';
+import { Input } from 'shared/ui/Input/Input';
 
 import PageLoader from 'widgets/PageLoader/PageLoader';
 import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { Select } from 'shared/ui/Select/Select';
 import { Currency } from 'entities/Currency/model/types/currency';
 import { CurrencySelect } from 'entities/Currency';
 import { Country } from 'entities/Country';

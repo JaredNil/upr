@@ -23,6 +23,7 @@ import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ValidateProfileError } from 'entities/Profile/model/types/profile';
+import { useParams } from 'react-router-dom';
 import cls from './ProfilePage.module.scss';
 
 interface ProfilePageProps {
@@ -44,6 +45,8 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 	const readonly = useSelector(getProfileReadOnly);
 	const validateError = useSelector(getProfileValidateError);
 
+	const { id } = useParams<{ id: string }>();
+
 	const validateErrorTranslates = {
 		[ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),
 		[ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
@@ -53,8 +56,10 @@ const ProfilePage: React.FC<ProfilePageProps> = (props: ProfilePageProps) => {
 	};
 
 	useEffect(() => {
-		dispatch(fetchProfileData());
-	}, [dispatch]);
+		if (id) {
+			dispatch(fetchProfileData(id));
+		}
+	}, [dispatch, id]);
 
 	const onChangeFirstname = useCallback(
 		(value?: string) => {

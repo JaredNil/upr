@@ -1,4 +1,4 @@
-import AppLink, { AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 import { SidebarItemType } from 'widgets/Sidebar/model/items';

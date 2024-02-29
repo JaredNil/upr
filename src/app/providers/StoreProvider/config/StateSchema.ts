@@ -1,12 +1,16 @@
-import { EnhancedStore, Reducer, ReducersMapObject, UnknownAction, combineReducers } from '@reduxjs/toolkit';
+import { EnhancedStore, Reducer, ReducersMapObject, UnknownAction } from '@reduxjs/toolkit';
+import { NavigateOptions, To } from 'react-router-dom';
 import { AxiosInstance } from 'axios';
+
 import { ArticleDetailsSchema } from 'entities/Article';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
+
+import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
+import { ArticlePageSchema } from 'pages/ArticlesPage';
+
 import { LoginSchema } from 'features/AuthByUserName';
 import { AddCommentFormSchema } from 'features/addCommentForm';
-import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
-import { NavigateOptions, To } from 'react-router-dom';
 
 export interface StateSchema {
 	user: UserSchema;
@@ -16,6 +20,7 @@ export interface StateSchema {
 	articleDetails?: ArticleDetailsSchema;
 	articleDetailsComments?: ArticleDetailsCommentsSchema;
 	addCommentForm?: AddCommentFormSchema;
+	articlesPage?: ArticlePageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

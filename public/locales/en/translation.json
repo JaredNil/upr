@@ -1,18 +1,32 @@
 {
-    "Язык": "English",
-    "Тестовый пример": "Test example",
-    "Перевод": "Translation",
-    "О_сайте_титул": "About",
-    "Главная_титул": "MainPage",
-    "Страница не найдена": "Page not found",
-
-    "Произошла непредвиденная ошибка": "An unexpected error has occurred",
-    "Обновить страницу": "Reload application",
-
-    "Войти": "Auth",
-    "Выйти": "Exit",
-
-    "Введите username": "Type username",
-    "Введите password": "Type password"
-
+  "Тестовый пример": "Test example",
+  "Перевод": "Translate",
+  "Главная страница": "Main page",
+  "Язык": "English",
+  "новый перевод": "новый перевод",
+  "Страница не найдена": "Page not found",
+  "Произошла непредвиденная ошибка": "An unexpected error has occurred",
+  "Обновить страницу": "Reload page",
+  "throw error": "throw error",
+  "Главная": "Main",
+  "О сайте": "About us",
+  "Переключить": "Переключить",
+  "Короткий язык": "En",
+  "Войти": "Login",
+  "increment": "increment",
+  "decrement": "decrement",
+  "Введите username": "Enter username",
+  "Введите пароль": "Enter password",
+  "Форма авторизации": "Auth form",
+  "Вы ввели неверный логин или пароль": "Uncorrect username or password",
+  "Выйти": "Logout",
+  "Укажите валюту": "Choose currency",
+  "Укажите страну": "Choose country",
+  "Профиль": "Profile",
+  "Статья не найдена": "Статья не найдена",
+  "Статьи": "Articles",
+  "Произошла ошибка при загрузке статьи": "Произошла ошибка при загрузке статьи.",
+  "Комментарии отсутствуют": "Комментарии отсутствуют",
+  "Введите текст комментария": "Введите текст комментария",
+  "Отправить": "Отправить"
 }
